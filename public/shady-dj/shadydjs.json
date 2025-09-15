@@ -1,0 +1,72 @@
+{
+  "background": [
+    { "name": "tresor", "weight": 20 },
+    { "name": "sisyphos", "weight": 20 },
+    { "name": "luksohub", "weight": 20 },
+    { "name": "kitkat", "weight": 20 },
+    { "name": "burningman", "weight": 10 },
+    { "name": "berhain", "weight": 10 },
+    { "name": "amnesia", "weight": 20 },
+    { "name": "jesus", "weight": 5 }
+  ],
+  "body": [
+    { "name": "yellow", "weight": 20 },
+    { "name": "turkey", "weight": 5 },
+    { "name": "reddish", "weight": 20 },
+    { "name": "pink", "weight": 10 },
+    { "name": "greenish", "weight": 10 },
+    { "name": "green", "weight": 40 },
+    { "name": "blue", "weight": 40 },
+    { "name": "black", "weight": 40 }
+  ],
+  "head": [
+    { "name": "zyklop", "weight": 10 },
+    { "name": "thewizard", "weight": 5 },
+    { "name": "ledfut", "weight": 10 },
+    { "name": "lazereyes", "weight": 5 },
+    { "name": "jan", "weight": 10 },
+    { "name": "googles", "weight": 10 },
+    { "name": "fabian", "weight": 10 },
+    { "name": "eyes", "weight": 10 },
+    { "name": "dominatingcat", "weight": 2 },
+    { "name": "boris", "weight": 5 }
+  ],
+  "bonus2": [
+    { "name": "mitsubishi", "weight": 2 },
+    { "name": "kokain", "weight": 5 },
+    { "name": "ketamin", "weight": 10 },
+    { "name": "functionone", "weight": 10 },
+    { "name": "dummy", "weight": 10 },
+    { "name": "chillwhale", "weight": 5 },
+    { "name": "babyoil", "weight": 10 },
+    { "name": "none", "weight": 10 },
+    { "name": "angrydick", "weight": 20 }
+  ],
+  "bonus1": [
+    { "name": "sennheiser", "weight": 5 },
+    { "name": "pioneer", "weight": 10 },
+    { "name": "kv2", "weight": 5 },
+    { "name": "katerblau", "weight": 5 },
+    { "name": "alen", "weight": 10 },
+    { "name": "none", "weight": 15 },
+    { "name": "ableton", "weight": 5 }
+  ],
+  "weapon": [
+    { "name": "sword", "weight": 10 },
+    { "name": "stabbingdick", "weight": 10 },
+    { "name": "mixer", "weight": 20 },
+    { "name": "knife", "weight": 20 },
+    { "name": "kala", "weight": 10 },
+    { "name": "none", "weight": 10 },
+    { "name": "handofjesus", "weight": 2 },
+    { "name": "emptyballoon", "weight": 5 }
+  ],
+
+  "shield": [
+    { "name": "stakingverse", "weight": 20 },
+    { "name": "mcdonald", "weight": 5 },
+    { "name": "lukso", "weight": 20 },
+    { "name": "none", "weight": 10 },
+    { "name": "fish", "weight": 5 }
+  ]
+}
