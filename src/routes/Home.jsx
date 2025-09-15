@@ -153,7 +153,7 @@ function Home() {
 
   const mint = async (e) => {
     if (!auth.walletConnected) {
-      toast.error(`Connect your wallet`,{icon:`🤬`})
+      toast.error(`Connect your wallet`, { icon: `🤬` })
       return
     }
     e.target.disabled = true
@@ -199,7 +199,7 @@ function Home() {
     if (shield[0].toUpperCase() !== `NONE`) attributes.push({ key: 'Shield', value: shield[0].toUpperCase() })
 
     const uploadResult = await upload(svg.outerHTML)
-   console.log(`uploadResult => `, uploadResult)
+    console.log(`uploadResult => `, uploadResult)
     const verifiableUrl = await rAsset(uploadResult[1]) //uploadResult[1]
 
     toast.dismiss(createToast)

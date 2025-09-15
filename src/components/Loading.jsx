@@ -7,7 +7,7 @@ export const Loading = () => (
       <figure>
         <img className='animate__animated animate__wobble animate__infinite' 
         
-        alt={`Loading`} src={`/logo.svg`} width={248} height={248}/>
+        alt={`Loading`} src={`/logo.svg`} width={548} height={548}/>
       </figure>
       <div />
     </div>
