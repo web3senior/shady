@@ -4,13 +4,13 @@ import ABI from './../abi/Shady.json'
 import Web3 from 'web3'
 import styles from './Admin.module.scss'
 
-const web3 = new Web3(window.lukso)
+const web3 = new Web3(window.ethereum)
 const contract = new web3.eth.Contract(ABI, import.meta.env.VITE_CONTRACT)
 const _ = web3.utils
 
 function Admin() {
   const [isLoading, setIsLoading] = useState(false)
-  const [emoji, setEmoji] = useState([])
+  const [balance, setBalance] = useState()
 
 
   const updatePrice = async (e) => {
@@ -24,7 +24,7 @@ function Admin() {
     const price = formData.get('price')
     
     try {
-      window.lukso.request({ method: 'eth_requestAccounts' }).then((accounts) => {
+      window.ethereum.request({ method: 'eth_requestAccounts' }).then((accounts) => {
         contract.methods
           .updateMintPrice(_.toWei(price, `ether`))
           .send({
@@ -49,7 +49,7 @@ function Admin() {
     }
   }
 
- const updateWhitelist = async (e) => {
+ const transferBalance = async (e) => {
     e.preventDefault()
 
     setIsLoading(true)
@@ -57,13 +57,13 @@ function Admin() {
     const t = toast.loading(`Waiting for transaction's confirmation`)
 
     const formData = new FormData(e.target)
-    const addr = formData.get('address')
-    const count = formData.get('count')
+    const amount= formData.get('amount')
+    const address= formData.get('address')
     
     try {
-      window.lukso.request({ method: 'eth_requestAccounts' }).then((accounts) => {
+      window.ethereum.request({ method: 'eth_requestAccounts' }).then((accounts) => {
         contract.methods
-          .updateWhitelist(addr, count)
+          .transferBalance(address, web3.utils.toWei(amount, `ether`))
           .send({
             from: accounts[0],
           })
@@ -88,10 +88,10 @@ function Admin() {
   const handleTransfer = async (e) => {
     const t = toast.loading(`Waiting for transaction's confirmation`)
     e.target.innerText = `Waiting...`
-    if (typeof window.lukso === 'undefined') window.open('https://chromewebstore.google.com/detail/universal-profiles/abpickdkkbnbcoepogfhkhennhfhehfn?hl=en-US&utm_source=candyzap.com', '_blank')
+    if (typeof window.ethereum === 'undefined') window.open('https://chromewebstore.google.com/detail/universal-profiles/abpickdkkbnbcoepogfhkhennhfhehfn?hl=en-US&utm_source=candyzap.com', '_blank')
 
     try {
-      window.lukso
+      window.ethereum
         .request({ method: 'eth_requestAccounts' })
         .then((accounts) => {
           const account = accounts[0]
@@ -189,11 +189,11 @@ function Admin() {
     }
     return null
   }
-  const getWhitelist = async (addr) => await contract.methods.getWhitelist(addr).call()
+  const getBalance = async () => await web3.eth.getBalance( import.meta.env.VITE_CONTRACT)
   
   
   useEffect(() => {
- 
+ getBalance().then(res => setBalance(web3.utils.fromWei(res, `ether`)))
   }, [])
 
   return (
@@ -234,19 +234,22 @@ function Admin() {
 
             <div className="card">
               <div className="card__header d-flex align-items-center justify-content-between">
-                Update Whitelist
+             transfer Balance
               </div>
               <div className="card__body">
+                {
+                  balance && <code>{balance} LYX</code>
+                }
                 {/* {errors?.email && <span>{errors.email}</span>} */}
-                <form onSubmit={(e) => updateWhitelist(e)} className={`form d-flex flex-column`} style={{ rowGap: '1rem' }}>
+                <form onSubmit={(e) => transferBalance(e)} className={`form d-flex flex-column`} style={{ rowGap: '1rem' }}>
                   
                 <div>
-                    <input type="text" name="address" placeholder="0x0" required />
+                    <input type="text" name="amount" placeholder="0" required />
                   </div>
 
 
                   <div>
-                    <input type="number" name="count" placeholder="0" required />
+                    <input type="text" name="address" placeholder="0x0" required />
                   </div>
 
                   <button className="mt-20 btn" type="submit">
